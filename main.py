@@ -24,6 +24,7 @@ for line in lines:
     if operation == "send":
         if '"' not in line:
             result = line.split("send ")[1]
+            result = result.replace("\n", "")
             result = variables[result]
             result = re.search('"(.*)"', result)
             print(result.group(1))
@@ -43,4 +44,4 @@ for line in lines:
 
             
         variables[variable_name] = variable_data
-        json.dumps(variables)         
+        json.dumps(variables)       
