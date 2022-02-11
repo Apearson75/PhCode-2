@@ -3,13 +3,10 @@ import re
 import json
 
 #Operator check for variables
-operators = ['send', 'var', 'input']
+operators = ['send', 'var', 'is']
 
 #Get the file
-file = input("Type the name of your file you want to run ")
-if file == "":
-    file = "main.ph"
-file = open(file, 'r')
+file = open('main.ph', 'r')
 lines = file.readlines()
 
 #For the lines and stuff
@@ -44,14 +41,13 @@ for line in lines:
 
             
         variables[variable_name] = variable_data
-        json.dumps(variables) 
+        json.dumps(variables)
+        
 
     #Input Command
-    elif operation == "input":
-        input_ = line.split("input ")[1]
-        input_name = input_.split(" ")[0]
-        input_ask = input_.split(f"{input_name} ")[1]
-        input_data = input(input_ask)
-
-        variables[input_name] = input_data
-        json.dumps(variables)    
+    elif operation == "is":
+        result = line.split("is ")[1]
+        if eval(result):
+            print(True)
+        else:
+            print(False)       
