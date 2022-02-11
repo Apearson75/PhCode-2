@@ -1,9 +1,15 @@
+<style>
+    img[src$="centerimg"]{
+         display:block;
+         margin: 0 auto;
+    }
+</style>
+
 <h1 align="center">PhCode 2</h1>
 
+![Plagerised Logo](./images/PhCode-Logo.png?style=centerimg)
 
-*The most Terrible Programing language ever.* - me
-
-![Plagerised Logo](./images/PhCode-Logo.png)
+*The worst programing language ever.* - me
 
 ---
 ## Sample Code
