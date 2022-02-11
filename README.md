@@ -1,13 +1,9 @@
-<style>
-    img[src$="centerimg"]{
-         display:block;
-         margin: 0 auto;
-    }
-</style>
 
 <h1 align="center">PhCode 2</h1>
 
-![Plagerised Logo](./images/PhCode-Logo.png?style=centerimg)
+<p align="center">
+    <img src="./images/PhCode-Logo.png" alt="Plagerised Logo"/>
+</p>
 
 *The worst programing language ever.* - me
 
@@ -22,3 +18,9 @@ send "Hello World"
 var hello "Hello World"
 send hello
 ```
+
+---
+
+## How to use
+
+1. Download the python file
