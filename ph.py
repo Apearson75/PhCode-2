@@ -1,9 +1,10 @@
 from pprint import pprint
 import re
 import json
+import sys
 
 #Operator check for variables
-operators = ['send', 'var', 'is']
+operators = ['send', 'var', 'is', 'end']
 
 #Get the file
 file = open('main.ph', 'r')
@@ -44,10 +45,16 @@ for line in lines:
         json.dumps(variables)
         
 
-    #Input Command
+    #Is Command
     elif operation == "is":
         result = line.split("is ")[1]
         if eval(result):
             print(True)
         else:
             print(False)       
+    
+    
+    #End Command
+    elif operation == "end" or operation == "end\n":
+        input("Press Enter to Finish ")
+        raise SystemExit
