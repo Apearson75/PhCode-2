@@ -41,14 +41,14 @@ WIP
 
 ## Comparison (Python vs PhCode)
 
-<p align="left">
+<p>
     <strong>
         Python:
     </strong>
     <img src="./images/Python-Screenshot.png"/>
 </p>
 
-<p align="right">
+<p>
     <strong>
         PhCode:
     </strong>
