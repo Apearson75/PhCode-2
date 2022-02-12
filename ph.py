@@ -32,8 +32,16 @@ for line in lines:
     count += 1
     operation = line.split(" ")[0]
     
+    #Check for '#'
+    if line[0] == "#":
+        pass 
+
+    #Check for \n
+    elif line == "\n":
+        pass
+    
     #Print Command
-    if operation == "send":
+    elif operation == "send":
         if '"' not in line:
             result = line.split("send ")[1]
             result = result.replace("\n", "")
@@ -72,3 +80,10 @@ for line in lines:
     elif operation == "end" or operation == "end\n":
         input("\n\nPress Enter to Finish ")
         raise SystemExit
+
+    #Changing variables
+    else:
+        variable_name = line.split(" ")[0]
+        variable_data = line.split(f"{variable_name} ")[1]
+        if variable_name in variables:
+            variables[variable_name] = variable_data

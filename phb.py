@@ -53,7 +53,6 @@ for line in lines:
         variable = line.split("var ")[1]
         variable_name = variable.split(" ")[0]
         variable_data = variable.split(f"{variable_name} ")[1]
-        print(variable_data)
         variables[variable_name] = variable_data
         json.dumps(variables)
         py_file = py_file + f"{variable_name} = {variable_data}\n"
@@ -63,6 +62,18 @@ for line in lines:
         py_file = py_file + 'input("Press Enter to Finish ")\n'
         py_file = py_file + "raise SystemExit\n"    
 
+    #Changing variables
+    else:
+        variable_name = line.split(" ")[0]
+        variable_data = line.split(f"{variable_name} ")[1]
+        if variable_name in variables:
+            variables[variable_name] = variable_data
+            json.dumps(variables)
+            py_file = py_file + f"{variable_name} = {variable_data}"
+
+
+
+#Add data to out.py 
 try:    
     with open("out.py", "x") as out:
         out.write(py_file) 
