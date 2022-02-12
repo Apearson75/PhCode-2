@@ -41,16 +41,12 @@ WIP
 
 ## Comparison (Python vs PhCode)
 
+**Python:**
 <p>
-    <strong>
-        Python:
-    </strong>
     <img src="./images/Python-Screenshot.png"/>
 </p>
 
+**PhCode:**
 <p>
-    <strong>
-        PhCode:
-    </strong>
     <img src="./images/Phcode-Screenshot.png"/>
 </p>
