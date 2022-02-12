@@ -25,11 +25,18 @@ py_file = ""
 
 export = input("Export to exe (Y/n) ")
 
-
 for line in lines:
     count += 1
     operation = line.split(" ")[0]
 
+    #Check for \n
+    if line == "\n":
+        py_file = py_file + "\n"
+
+    #Check for '#'
+    if line[0] == "#":
+        py_file = py_file + line    
+    
     #Print Command
     if operation == "send":
         if '"' not in line:
