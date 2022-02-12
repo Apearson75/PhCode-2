@@ -34,11 +34,11 @@ for line in lines:
         py_file = py_file + "\n"
 
     #Check for '#'
-    if line[0] == "#":
+    elif line[0] == "#":
         py_file = py_file + line    
     
     #Print Command
-    if operation == "send":
+    elif operation == "send":
         if '"' not in line:
             result = line.split("send ")[1]
             result_name = result.replace("\n", "")

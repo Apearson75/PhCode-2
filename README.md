@@ -30,3 +30,27 @@ end
 2. Download the VSCODE Extension [here](https://marketplace.visualstudio.com/items?itemName=Phoneguytech75.phcode)
 3. Add the source to the path.
 4. you can now run PhCode
+   
+---
+
+## How to Export
+
+WIP
+
+---
+
+## Comparison (Python vs PhCode)
+
+<p align="left">
+    <strong>
+        Python:
+    </strong>
+    <img src="./images/Python-Screenshot.png"/>
+</p>
+
+<p align="right">
+    <strong>
+        PhCode:
+    </strong>
+    <img src="./images/Phcode-Screenshot.png"/>
+</p>
