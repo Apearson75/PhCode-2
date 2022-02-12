@@ -26,7 +26,7 @@ end
 
 ## How to use
 
-1. Download the python file
+1. Download the source code.
 2. Download the VSCODE Extension [here](https://marketplace.visualstudio.com/items?itemName=Phoneguytech75.phcode)
-3. Create a file called ```main.ph``` in the same folder as ```ph.py```
-4. Run the ```ph.py``` file
+3. Add the source to the path.
+4. you can now run PhCode

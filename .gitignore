@@ -1,2 +1,7 @@
 *.ph
 lol.py
+out.py
+/.vscode
+/__pycache__
+/out.build
+/out.dist
