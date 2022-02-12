@@ -1,6 +1,7 @@
 import argparse
 import re
 import os
+import json
 
 print("Remember to download Nuitka using  pip install -U nuitka\n\n")
 
@@ -33,21 +34,23 @@ for line in lines:
     if operation == "send":
         if '"' not in line:
             result = line.split("send ")[1]
-            result = result.replace("\n", "")
-            result = variables[result]
-            result = re.search('"(.*)"', result)
-            py_file = py_file + f"print('{result.group(1)}')\n"
+            result_name = result.replace("\n", "")
+            py_file = py_file + f"print({result_name})\n"
         else:        
             result = line.split("send ")[1]
             result = re.search('"(.*)"', result)
             py_file = py_file + f"print('{result.group(1)}')\n"
-    
+
     #Variable Command
     elif operation == "var":    
         variable = line.split("var ")[1]
         variable_name = variable.split(" ")[0]
         variable_data = variable.split(f"{variable_name} ")[1]
-
+        print(variable_data)
+        variables[variable_name] = variable_data
+        json.dumps(variables)
+        py_file = py_file + f"{variable_name} = {variable_data}\n"
+    
     #End Command
     elif operation == "end" or operation == "end\n":
         py_file = py_file + 'input("Press Enter to Finish ")\n'
@@ -58,13 +61,13 @@ try:
         out.write(py_file) 
 except:
     with open("out.py", "w") as w:
-        w.write(py_file)        
+        w.write(py_file)               
 
 if export == "y" or export == "Y":
-    os.system("nuitka --oneline out.py")
-    print("Exported to Exe")
+    os.system("nuitka --standalone out.py")
+    print("\n\nExported to Exe")
     input("")
 
 else:
-    print("Exported to out.py")
+    print("\n\nExported to out.py")
     input("")
