@@ -1,1 +1,0 @@
-python -m ph -l %1

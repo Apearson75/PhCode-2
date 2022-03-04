@@ -3,7 +3,7 @@ import re
 import os
 import json
 
-print("Remember to download Nuitka using  pip install -U nuitka\n\n")
+print("Remember to download Pyinstaller using  pip install -U pyinstaller\n\n")
 
 #Args
 parser = argparse.ArgumentParser(description='loads .ph file')
@@ -84,7 +84,7 @@ except:
 if export == "y" or export == "Y":
     os.system("pyinstaller --onefile out.py")
     os.system("rmdir /s /q build")
-    print("\n\nExported to Exe")
+    input("\n\nExported to Exe")
 
 else:
-    print("\n\nExported to out.py")
+    input("\n\nExported to out.py")
