@@ -4,3 +4,6 @@ out.py
 /__pycache__
 /out.build
 /out.dist
+/dist
+/build
+*.spec

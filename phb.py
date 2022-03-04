@@ -82,10 +82,9 @@ except:
         w.write(py_file)               
 
 if export == "y" or export == "Y":
-    os.system("nuitka --standalone out.py")
+    os.system("pyinstaller --onefile out.py")
+    os.system("rmdir /s /q build")
     print("\n\nExported to Exe")
-    input("")
 
 else:
     print("\n\nExported to out.py")
-    input("")
