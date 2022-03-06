@@ -3,6 +3,12 @@ import re
 import json
 import sys
 import argparse
+from lib.IS import IS
+from lib.changeVar import change
+from lib.input import Input
+
+from lib.send import send
+from lib.var import var
 
 #Args
 parser = argparse.ArgumentParser(description='loads .ph file')
@@ -18,7 +24,7 @@ args = parser.parse_args()
 file_path = args.load
 
 #Operator check for variables
-operators = ['send', 'var', 'is', 'end']
+operators = ['send', 'var', 'is', 'end', 'input']
 
 #Get the file
 file = open(file_path, 'r')
@@ -42,39 +48,20 @@ for line in lines:
     
     #Print Command
     elif operation == "send":
-        if '"' not in line:
-            result = line.split("send ")[1]
-            result = result.replace("\n", "")
-            result = variables[result]
-            result = re.search('"(.*)"', result)
-            print(result.group(1))
-        else:    
-            try:    
-                result = line.split("send ")[1]
-                result = re.search('"(.*)"', result)
-                print(result.group(1))
-            except AttributeError:
-                print(f"String Error in line {count} on {file.name}")
+        send(line, variables)
     
     #Variable Command
     elif operation == "var":    
-        variable = line.split("var ")[1]
-        variable_name = variable.split(" ")[0]
-        variable_data = variable.split(f"{variable_name} ")[1]
-
-            
-        variables[variable_name] = variable_data
-        json.dumps(variables)
+        var(line, variables)
         
 
     #Is Command
     elif operation == "is":
-        result = line.split("is ")[1]
-        if eval(result):
-            print(True)
-        else:
-            print(False)       
-    
+        IS(line)
+
+    #Input Command
+    elif operation == "input":
+        Input(line)    
     
     #End Command
     elif operation == "end" or operation == "end\n":
@@ -83,7 +70,4 @@ for line in lines:
 
     #Changing variables
     else:
-        variable_name = line.split(" ")[0]
-        variable_data = line.split(f"{variable_name} ")[1]
-        if variable_name in variables:
-            variables[variable_name] = variable_data
+        change(line, variables)

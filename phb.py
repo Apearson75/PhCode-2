@@ -2,6 +2,10 @@ import argparse
 import re
 import os
 import json
+from lib.changeVar import changeB
+
+from lib.send import sendB
+from lib.var import varB
 
 print("Remember to download Pyinstaller using  pip install -U pyinstaller\n\n")
 
@@ -39,23 +43,11 @@ for line in lines:
     
     #Print Command
     elif operation == "send":
-        if '"' not in line:
-            result = line.split("send ")[1]
-            result_name = result.replace("\n", "")
-            py_file = py_file + f"print({result_name})\n"
-        else:        
-            result = line.split("send ")[1]
-            result = re.search('"(.*)"', result)
-            py_file = py_file + f"print('{result.group(1)}')\n"
+        py_file += sendB(line)
 
     #Variable Command
     elif operation == "var":    
-        variable = line.split("var ")[1]
-        variable_name = variable.split(" ")[0]
-        variable_data = variable.split(f"{variable_name} ")[1]
-        variables[variable_name] = variable_data
-        json.dumps(variables)
-        py_file = py_file + f"{variable_name} = {variable_data}\n"
+        py_file += varB(line, variables)
     
     #End Command
     elif operation == "end" or operation == "end\n":
@@ -64,12 +56,7 @@ for line in lines:
 
     #Changing variables
     else:
-        variable_name = line.split(" ")[0]
-        variable_data = line.split(f"{variable_name} ")[1]
-        if variable_name in variables:
-            variables[variable_name] = variable_data
-            json.dumps(variables)
-            py_file = py_file + f"{variable_name} = {variable_data}"
+        py_file += changeB(line, variables)
 
 
 

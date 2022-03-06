@@ -7,3 +7,5 @@ out.py
 /dist
 /build
 *.spec
+/lib/__pycache__
+test.ph
