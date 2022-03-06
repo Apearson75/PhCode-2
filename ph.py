@@ -23,8 +23,6 @@ parser.add_argument(
 args = parser.parse_args()
 file_path = args.load
 
-#Operator check for variables
-operators = ['send', 'var', 'is', 'end', 'input']
 
 #Get the file
 file = open(file_path, 'r')

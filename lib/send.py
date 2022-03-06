@@ -3,10 +3,14 @@ import re
 def send(line, variables):
     if '"' not in line:
             result = line.split("send ")[1]
-            result = result.replace("\n", "")
+            if "\n" in result:    
+                result = result.replace("\n", "")    
             result = variables[result]
-            result = re.search('"(.*)"', result)
-            print(result.group(1))
+            if "\n" in result:
+                result = re.search('"(.*)"', result)
+                print(result.group(1))
+            else:
+                print(result)    
     else:        
         result = line.split("send ")[1]
         result = re.search('"(.*)"', result)
