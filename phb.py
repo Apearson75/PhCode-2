@@ -20,6 +20,8 @@ parser.add_argument(
 args = parser.parse_args()
 file_path = args.load
 file = open(file_path, 'r')
+file_name = file.name.split(".")[0]
+
 lines = file.readlines()
 
 count = 0
@@ -62,16 +64,17 @@ for line in lines:
 
 #Add data to out.py 
 try:    
-    with open("out.py", "x") as out:
+    with open(f"{file_name}.py", "x") as out:
         out.write(py_file) 
 except:
-    with open("out.py", "w") as w:
+    with open(f"{file_name}.py", "w") as w:
         w.write(py_file)               
 
 if export == "y" or export == "Y":
-    os.system("pyinstaller --onefile out.py")
+    os.system(f"pyinstaller --onefile {file_name}.py")
     os.system("rmdir /s /q build")
+    os.system(f"del {file_name}.spec")
     input("\n\nExported to Exe")
 
 else:
-    input("\n\nExported to out.py")
+    input(f"\n\nExported to {file_name}.py")

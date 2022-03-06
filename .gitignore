@@ -9,3 +9,5 @@ out.py
 *.spec
 /lib/__pycache__
 test.ph
+main.py
+test.py
