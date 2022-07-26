@@ -31,6 +31,8 @@ py_file = ""
 
 export = input("Export to exe (Y/n) ")
 
+py_file = py_file + "# -------------------------\n# Compiled using PhCode Builder\n# -------------------------\n\n"
+
 for line in lines:
     count += 1
     operation = line.split(" ")[0]
